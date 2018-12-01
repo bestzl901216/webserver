@@ -1,6 +1,6 @@
-package com.ricardo.shiro.mapper;
+package com.ricardo.account.mapper;
 
-import com.ricardo.shiro.mapper.entity.Account;
+import com.ricardo.account.mapper.entity.Account;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;

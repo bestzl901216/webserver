@@ -1,4 +1,4 @@
-package com.ricardo.webserver;
+package com.ricardo.biz;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WebserverApplicationTests {
+public class WebServerApplicationTests {
 
     @Test
     public void contextLoads() {

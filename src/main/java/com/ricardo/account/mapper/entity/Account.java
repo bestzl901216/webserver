@@ -1,4 +1,4 @@
-package com.ricardo.shiro.mapper.entity;
+package com.ricardo.account.mapper.entity;
 
 import com.ricardo.common.BaseEntity;
 import lombok.Data;

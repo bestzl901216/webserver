@@ -1,4 +1,4 @@
-package com.ricardo.webserver;
+package com.ricardo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2018/11/29
  */
 @SpringBootApplication
-@MapperScan("com.ricardo.webserver.mapper")
+@MapperScan(value = {"com.ricardo.account.mapper", "com.ricardo.biz.mapper"})
 @Slf4j
 public class WebServerApplication {
 

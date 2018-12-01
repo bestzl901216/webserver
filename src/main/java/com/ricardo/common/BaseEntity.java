@@ -1,8 +1,19 @@
 package com.ricardo.common;
 
+import lombok.Data;
+
 /**
  * @author Ricardo
  * @date 2018/12/1
  */
-public class BaseEntity {
+@Data
+public abstract class BaseEntity {
+
+    private Integer createTime;
+
+    private Integer createUser;
+
+    private Integer updateTime;
+
+    private Integer updateUser;
 }

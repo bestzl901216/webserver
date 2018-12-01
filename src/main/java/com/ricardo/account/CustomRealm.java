@@ -1,7 +1,7 @@
-package com.ricardo.shiro;
+package com.ricardo.account;
 
-import com.ricardo.shiro.mapper.AccountMapper;
-import com.ricardo.shiro.mapper.entity.Account;
+import com.ricardo.account.mapper.AccountMapper;
+import com.ricardo.account.mapper.entity.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * @author Ricardo
  * @date 2018/12/1
  */
-@Component
+@Component("authorizer")
 @Slf4j
 public class CustomRealm extends AuthorizingRealm implements InitializingBean {
 
@@ -70,6 +70,7 @@ public class CustomRealm extends AuthorizingRealm implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
+        // 指定账号密码的加密方式
         HashedCredentialsMatcher hashMatcher = new HashedCredentialsMatcher();
         hashMatcher.setHashAlgorithmName(Sha256Hash.ALGORITHM_NAME);
         hashMatcher.setStoredCredentialsHexEncoded(false);

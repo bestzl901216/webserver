@@ -1,9 +1,7 @@
-package com.ricardo.webserver.controller;
+package com.ricardo.biz.controller;
 
-import com.ricardo.webserver.mapper.CityMapper;
-import com.ricardo.webserver.mapper.entity.City;
+import com.ricardo.biz.mapper.entity.City;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("city")
 public class CityController {
 
-    @Autowired
-    private CityMapper cityMapper;
-
     @GetMapping("/{id}")
     public City test(@PathVariable Integer id) {
-        return cityMapper.getById(id);
+        return new City(id, "北京", "beijing", "", 10000000);
     }
 }
