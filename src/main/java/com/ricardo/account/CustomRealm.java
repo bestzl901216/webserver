@@ -54,7 +54,9 @@ public class CustomRealm extends AuthorizingRealm implements InitializingBean {
             throw new AccountException("Null name are not allowed by this realm.");
         }
 
-        Account account = accountMapper.findAccountByName(name);
+        Account account = new Account();
+        account.setName(name);
+        account = accountMapper.selectOne(account);
         log.debug("account = [{}]", account);
         if (account == null) {
             throw new UnknownAccountException("No account found for admin [" + name + "]");

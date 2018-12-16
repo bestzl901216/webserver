@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-public class CityController {
+public class VoucherController {
 
 
 }

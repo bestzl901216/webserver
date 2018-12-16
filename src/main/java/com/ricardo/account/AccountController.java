@@ -1,15 +1,16 @@
 package com.ricardo.account;
 
+import com.ricardo.account.dto.AccountLoginDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 
 /**
  * @author Ricardo
@@ -20,20 +21,22 @@ import javax.validation.constraints.NotBlank;
 @RequestMapping("account")
 public class AccountController {
 
-    @PostMapping("login")
-    public Boolean login(@NotBlank String name, @NotBlank String pwd) {
-        log.info("login user's name = [{}]", name);
+    @PutMapping(value = "login")
+    public Boolean login(@RequestBody @Valid AccountLoginDTO dto) {
+        log.info("enter method AccountController.login: name = [{}]", dto.getName());
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(name, pwd);
+        UsernamePasswordToken token = new UsernamePasswordToken(dto.getName(), dto.getPwd());
         currentUser.login(token);
         return true;
     }
 
-    @GetMapping("logout")
-    public Boolean login() {
-        log.info("enter method logout");
+    @PutMapping("logout")
+    public Boolean logout() {
+        log.info("enter method AccountController.logout");
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();
         return true;
     }
+
 }
+
