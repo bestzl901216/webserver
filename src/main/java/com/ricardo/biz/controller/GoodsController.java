@@ -5,6 +5,7 @@ import com.ricardo.biz.dto.GoodsListByPageDTO;
 import com.ricardo.biz.mapper.entity.Goods;
 import com.ricardo.biz.service.GoodsService;
 import com.ricardo.biz.vo.GoodsVO;
+import com.ricardo.common.DictItem;
 import com.ricardo.common.PageResult;
 import com.ricardo.utils.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 /**
  * @author Ricardo
@@ -50,5 +52,11 @@ public class GoodsController {
         PageResult<Goods> pageResult = goodsService.listGoodsByPage(goods, dto.getPage(), dto.getSize());
         log.info("pageResult=[{}]", pageResult);
         return new PageResult<>(pageResult.getTotal(), ObjectUtil.batchTransform(pageResult.getRows(), GoodsVO.class));
+    }
+
+    @GetMapping("/statusDict")
+    public Set<DictItem> getGoodsStatusDict() {
+        log.info("enter method GoodsController.getGoodsStatusDict");
+        return Goods.StatusEnum.dict;
     }
 }

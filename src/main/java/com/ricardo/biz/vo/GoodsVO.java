@@ -10,13 +10,15 @@ import lombok.Data;
 @Data
 public class GoodsVO {
 
+    /** id **/
+    private Integer id;
     /** 名称 **/
     private String name;
-    /** 商品规格 **/
+    /** 规格 **/
     private String specification;
     /** 厂商 **/
     private String manufacturer;
-    /** 商品状态 **/
+    /** 状态 **/
     private Goods.StatusEnum status;
 
 }
