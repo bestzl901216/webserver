@@ -2,14 +2,19 @@ package com.ricardo.biz.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Ricardo
  * @date 2018/12/10
  */
 @Data
-public class VoucherCreateDTO {
+public class VoucherCreateDto {
 
-    /** 礼品券种类id **/
-    private Integer voucherCategoryId;
+    /** 礼品券模板id **/
+    @Min(1)
+    @NotNull
+    private Integer voucherTemplateId;
 
 }
