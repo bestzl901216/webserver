@@ -1,24 +1,22 @@
 package com.ricardo.biz.dto;
 
+import com.ricardo.biz.mapper.entity.Goods;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * @author Ricardo
- * @date 2018/12/10
+ * @date 2018/12/16
  */
 @Data
-public class GoodsCreateDTO {
+public class GoodsQueryDto {
 
+    private Integer id;
     /** 名称 **/
-    @NotBlank
     private String name;
     /** 商品规格 **/
-    @NotBlank
     private String specification;
     /** 厂商 **/
-    @NotBlank
     private String manufacturer;
-
+    /** 商品状态 **/
+    private Goods.StatusEnum status;
 }

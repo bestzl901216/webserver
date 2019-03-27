@@ -10,11 +10,11 @@ import javax.validation.constraints.Min;
  * @date 2018/12/16
  */
 @Data
-public abstract class BasePageDTO {
+public abstract class BasePageDto {
 
     @Min(1)
     private Integer page;
     @Min(1)
-    @Max(1000)
+    @Max(50)
     private Integer size;
 }

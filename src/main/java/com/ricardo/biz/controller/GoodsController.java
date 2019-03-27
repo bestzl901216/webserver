@@ -1,13 +1,13 @@
 package com.ricardo.biz.controller;
 
-import com.ricardo.biz.dto.GoodsCreateDTO;
-import com.ricardo.biz.dto.GoodsListByPageDTO;
+import com.ricardo.biz.dto.GoodsCreateDto;
+import com.ricardo.biz.dto.GoodsListByPageDto;
 import com.ricardo.biz.mapper.entity.Goods;
 import com.ricardo.biz.service.GoodsService;
-import com.ricardo.biz.vo.GoodsVO;
+import com.ricardo.biz.vo.GoodsVo;
 import com.ricardo.common.DictItem;
 import com.ricardo.common.PageResult;
-import com.ricardo.utils.ObjectUtil;
+import com.ricardo.utils.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,37 +26,40 @@ import java.util.Set;
 @RequestMapping("goods")
 public class GoodsController {
 
-    @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private GoodsController(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
+
     @PostMapping("")
-    public Integer create(@RequestBody @Valid GoodsCreateDTO dto) {
+    public Integer create(@RequestBody @Valid GoodsCreateDto dto) {
         log.info("enter method GoodsController.create: dto=[{}]", dto);
-        Goods goods = ObjectUtil.transform(dto, Goods.class);
-        goodsService.create(goods);
-        return goods.getId();
+        Goods goods = ObjectUtils.transform(dto, Goods.class);
+        return goodsService.create(goods);
     }
 
     @GetMapping("/{id}")
-    public GoodsVO getGoodsById(@PathVariable Integer id) {
+    public GoodsVo getGoodsById(@PathVariable Integer id) {
         log.info("enter method GoodsController.getGoodsById: id=[{}]", id);
         Goods goods = goodsService.getGoodsById(id);
         log.info("goods=[{}]", goods);
-        return ObjectUtil.transform(goods, GoodsVO.class);
+        return ObjectUtils.transform(goods, GoodsVo.class);
     }
 
     @GetMapping("")
-    public PageResult<GoodsVO> listGoodsByPage(@NotNull @Valid GoodsListByPageDTO dto) {
+    public PageResult<GoodsVo> listGoodsByPage(@NotNull @Valid GoodsListByPageDto dto) {
         log.info("enter method GoodsController.listGoodsByPage: dto=[{}]", dto);
-        Goods goods = ObjectUtil.transform(dto, Goods.class);
+        Goods goods = ObjectUtils.transform(dto, Goods.class);
         PageResult<Goods> pageResult = goodsService.listGoodsByPage(goods, dto.getPage(), dto.getSize());
         log.info("pageResult=[{}]", pageResult);
-        return new PageResult<>(pageResult.getTotal(), ObjectUtil.batchTransform(pageResult.getRows(), GoodsVO.class));
+        return new PageResult<>(pageResult.getTotal(), ObjectUtils.batchTransform(pageResult.getRows(), GoodsVo.class));
     }
 
     @GetMapping("/statusDict")
     public Set<DictItem> getGoodsStatusDict() {
         log.info("enter method GoodsController.getGoodsStatusDict");
-        return Goods.StatusEnum.dict;
+        return Goods.StatusEnum.DICT;
     }
 }

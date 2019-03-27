@@ -1,6 +1,6 @@
 package com.ricardo.account;
 
-import com.ricardo.account.dto.AccountLoginDTO;
+import com.ricardo.account.dto.AccountLoginDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
 public class AccountController {
 
     @PutMapping(value = "login")
-    public Boolean login(@RequestBody @Valid AccountLoginDTO dto) {
+    public Boolean login(@RequestBody @Valid AccountLoginDto dto) {
         log.info("enter method AccountController.login: name = [{}]", dto.getName());
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(dto.getName(), dto.getPwd());
