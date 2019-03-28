@@ -1,6 +1,5 @@
 package com.ricardo.biz.controller;
 
-import com.ricardo.biz.dto.VoucherCreateDto;
 import com.ricardo.biz.mapper.entity.Voucher;
 import com.ricardo.biz.service.VoucherService;
 import com.ricardo.utils.MyObjectUtils;
