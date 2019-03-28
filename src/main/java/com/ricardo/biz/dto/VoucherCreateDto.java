@@ -7,13 +7,14 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author Ricardo
- * @date 2019/3/29
+ * @date 2018/12/10
  */
 @Data
 public class VoucherCreateDto {
 
-    /** 兑换券模板id **/
+    /** 礼品券模板id **/
     @Min(1)
     @NotNull
     private Integer voucherTemplateId;
+
 }
