@@ -2,8 +2,6 @@ package com.ricardo.biz;
 
 import com.ricardo.biz.mapper.GoodsMapper;
 import com.ricardo.biz.mapper.entity.Goods;
-import com.ricardo.biz.service.GoodsService;
-import com.ricardo.starter.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,13 +16,7 @@ import tk.mybatis.mapper.entity.Example;
 public class WebServerApplicationTests {
 
     @Autowired
-    private GoodsService goodsService;
-
-    @Autowired
     private GoodsMapper goodsMapper;
-
-    @Autowired
-    private AccountService accountService;
 
     @Test
     public void testGoods() {
@@ -40,11 +32,6 @@ public class WebServerApplicationTests {
             criteria.andEqualTo("name", goods.getName());
         }
         log.info("**********************goodsList = {}", goodsMapper.selectByExample(example));
-    }
-
-    @Test
-    public void contextLoads() {
-        log.info("账号信息：{}",accountService.getAccountName());
     }
 
 }

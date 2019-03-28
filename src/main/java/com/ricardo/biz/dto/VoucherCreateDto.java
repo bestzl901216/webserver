@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author Ricardo
- * @date 2018/12/10
+ * @date 2019/3/29
  */
 @Data
 public class VoucherCreateDto {
@@ -16,5 +16,4 @@ public class VoucherCreateDto {
     @Min(1)
     @NotNull
     private Integer voucherTemplateId;
-
 }
