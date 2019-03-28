@@ -3,7 +3,7 @@ package com.ricardo.biz.service;
 import com.ricardo.account.AccountUtils;
 import com.ricardo.biz.mapper.VoucherMapper;
 import com.ricardo.biz.mapper.entity.Voucher;
-import com.ricardo.utils.DateUtils;
+import com.ricardo.utils.MyDateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class VoucherService {
     public Integer create(Voucher voucher) {
         log.info("enter method VoucherService.create: voucher=[{}]", voucher);
         voucher.setPurchaseUid(AccountUtils.getCurrentUid());
-        voucher.setPurchaseTime(DateUtils.getCurrentSeconds());
+        voucher.setPurchaseTime(MyDateUtils.getCurrentSeconds());
         voucher.setStatus(Voucher.StatusEnum.FREEZE);
         voucher.addCreateInfo();
         voucherMapper.insertSelective(voucher);

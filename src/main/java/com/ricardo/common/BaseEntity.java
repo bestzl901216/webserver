@@ -1,7 +1,7 @@
 package com.ricardo.common;
 
 import com.ricardo.account.AccountUtils;
-import com.ricardo.utils.DateUtils;
+import com.ricardo.utils.MyDateUtils;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -27,11 +27,11 @@ public abstract class BaseEntity {
 
     public void addCreateInfo() {
         this.createUser = AccountUtils.getCurrentUid();
-        this.createTime = DateUtils.getCurrentSeconds();
+        this.createTime = MyDateUtils.getCurrentSeconds();
     }
 
     public void addUpdateInfo() {
         this.updateUser = AccountUtils.getCurrentUid();
-        this.updateTime = DateUtils.getCurrentSeconds();
+        this.updateTime = MyDateUtils.getCurrentSeconds();
     }
 }

@@ -12,18 +12,17 @@ import java.util.List;
  * @date 2018/12/10
  */
 @Slf4j
-public class ObjectUtils {
+public class MyObjectUtils {
 
-    private ObjectUtils() {
+    private MyObjectUtils() {
         throw new RuntimeException("no constructor!!!");
     }
 
     /**
      * 创建目标类型实例，根据源实例的属性类型和名称，赋予相同属性值
-     * @param object
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param object 数据源
+     * @param clazz 目标类型
+     * @return 目标类型对象
      * @throws NullPointerException 参数为null或者集合包含null时，抛出空指针异常
      */
     public static <T> T transform(Object object, Class<T> clazz) {
@@ -66,7 +65,6 @@ public class ObjectUtils {
      * 创建目标类型实例集合，根据源实例的属性类型和名称，赋予相同属性值
      * @param objects 待转换的实例集合
      * @param clazz 目标类型
-     * @param <T>
      * @return 目标类型实例集合
      * @throws NullPointerException 参数为null或者集合包含null时，抛出空指针异常
      */

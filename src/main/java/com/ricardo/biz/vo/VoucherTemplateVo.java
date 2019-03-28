@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class VoucherTemplateVo {
 
-    /** 礼品券种类id **/
+    /** 兑换券种类id **/
     private Integer id;
     /** 商品id集合 **/
     private List<Integer> goodsIdList;
@@ -21,6 +21,6 @@ public class VoucherTemplateVo {
     private List<Integer> goodsQuantityList;
     /** 零售价 **/
     private BigDecimal price;
-    /** 礼品券种类状态 **/
+    /** 兑换券种类状态 **/
     private VoucherTemplate.StatusEnum status;
 }

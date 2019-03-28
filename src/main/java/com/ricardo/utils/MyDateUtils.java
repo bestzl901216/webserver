@@ -4,9 +4,9 @@ package com.ricardo.utils;
  * @author Ricardo
  * @date 2018/12/16
  */
-public class DateUtils {
+public class MyDateUtils {
 
-    private DateUtils() {
+    private MyDateUtils() {
         throw new RuntimeException("no constructor!!!");
     }
 

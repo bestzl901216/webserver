@@ -4,7 +4,8 @@ import com.google.common.collect.Sets;
 import com.ricardo.biz.mapper.handlers.VoucherStatusEnumTypeHandler;
 import com.ricardo.common.BaseEntity;
 import com.ricardo.common.DictItem;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import tk.mybatis.mapper.annotation.ColumnType;
 import tk.mybatis.mapper.annotation.KeySql;
 import tk.mybatis.mapper.code.IdentityDialect;
@@ -18,15 +19,16 @@ import java.util.Set;
  * @author Ricardo
  * @date 2018/12/2
  */
-@Data
+@Setter
+@Getter
 @Table(name = "voucher")
 public class Voucher extends BaseEntity {
 
-    /** 礼品券id **/
+    /** 兑换券id **/
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL)
     private Integer id;
-    /** 礼品券模板id **/
+    /** 兑换券模板id **/
     private Integer voucherTemplateId;
     /** 购买者id **/
     private Integer purchaseUid;
@@ -36,7 +38,7 @@ public class Voucher extends BaseEntity {
     private Integer exchangeUid;
     /** 兑换时间 **/
     private Integer exchangeTime;
-    /** 礼品券状态，冻结 生效 失效 **/
+    /** 兑换券状态，冻结 生效 失效 **/
     @ColumnType(typeHandler = VoucherStatusEnumTypeHandler.class)
     private StatusEnum status;
 

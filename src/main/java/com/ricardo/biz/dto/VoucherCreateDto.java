@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class VoucherCreateDto {
 
-    /** 礼品券模板id **/
+    /** 兑换券模板id **/
     @Min(1)
     @NotNull
     private Integer voucherTemplateId;
