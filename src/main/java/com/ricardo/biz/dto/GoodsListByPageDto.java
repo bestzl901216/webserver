@@ -1,6 +1,7 @@
-package com.ricardo.biz.vo;
+package com.ricardo.biz.dto;
 
 import com.ricardo.biz.mapper.entity.Goods;
+import com.ricardo.common.BasePageDto;
 import lombok.Data;
 
 /**
@@ -8,17 +9,15 @@ import lombok.Data;
  * @date 2018/12/16
  */
 @Data
-public class GoodsVO {
+public class GoodsListByPageDto extends BasePageDto {
 
-    /** id **/
     private Integer id;
     /** 名称 **/
     private String name;
-    /** 规格 **/
+    /** 商品规格 **/
     private String specification;
     /** 厂商 **/
     private String manufacturer;
-    /** 状态 **/
+    /** 商品状态 **/
     private Goods.StatusEnum status;
-
 }

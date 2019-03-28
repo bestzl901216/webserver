@@ -12,7 +12,11 @@ import java.util.List;
  * @date 2018/12/10
  */
 @Slf4j
-public class ObjectUtil {
+public class ObjectUtils {
+
+    private ObjectUtils() {
+        throw new RuntimeException("no constructor!!!");
+    }
 
     /**
      * 创建目标类型实例，根据源实例的属性类型和名称，赋予相同属性值

@@ -1,10 +1,8 @@
 package com.ricardo.common;
 
-import com.ricardo.account.mapper.entity.Account;
-import com.ricardo.utils.DateUtil;
+import com.ricardo.account.AccountUtils;
+import com.ricardo.utils.DateUtils;
 import lombok.Data;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 
 import javax.persistence.Column;
 
@@ -28,16 +26,12 @@ public abstract class BaseEntity {
     private Integer updateUser;
 
     public void addCreateInfo() {
-        this.createTime = DateUtil.getCurrentSeconds();
-        Subject currentUser = SecurityUtils.getSubject();
-        Account account = (Account) currentUser.getPrincipal();
-        this.createUser = account.getId();
+        this.createUser = AccountUtils.getCurrentUid();
+        this.createTime = DateUtils.getCurrentSeconds();
     }
 
     public void addUpdateInfo() {
-        this.updateTime = DateUtil.getCurrentSeconds();
-        Subject currentUser = SecurityUtils.getSubject();
-        Account account = (Account) currentUser.getPrincipal();
-        this.updateUser = account.getId();
+        this.updateUser = AccountUtils.getCurrentUid();
+        this.updateTime = DateUtils.getCurrentSeconds();
     }
 }
