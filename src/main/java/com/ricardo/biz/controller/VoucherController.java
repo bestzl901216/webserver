@@ -39,4 +39,7 @@ public class VoucherController {
         Voucher voucher = MyObjectUtils.transform(dto, Voucher.class);
         return voucherService.create(voucher);
     }
+
+    // 获取兑换码
+    // 兑换商品
 }

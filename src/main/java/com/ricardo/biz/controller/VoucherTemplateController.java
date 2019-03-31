@@ -46,4 +46,7 @@ public class VoucherTemplateController {
         log.info("voucherTemplate=[{}]", voucherTemplate);
         return MyObjectUtils.transform(voucherTemplate, VoucherTemplateVo.class);
     }
+
+    // 更新兑换券模板
+    // 分页查询兑换券模板
 }

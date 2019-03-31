@@ -69,4 +69,9 @@ public class GoodsController {
         log.info("enter method GoodsController.getGoodsStatusDict");
         return Goods.StatusEnum.DICT;
     }
+
+    // 更新商品
+    // 删除商品
+    // 启用商品
+    // 废弃商品
 }
