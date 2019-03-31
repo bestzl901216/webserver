@@ -23,7 +23,7 @@ import java.util.Set;
  * @date 2018/11/29
  * 商品管理页面
  */
-@Api("商品资源接口")
+@Api(tags = "商品资源接口")
 @Slf4j
 @RestController
 @RequestMapping("goods")

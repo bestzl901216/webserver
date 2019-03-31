@@ -16,10 +16,19 @@ public class ShiroConfig {
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
 
+        // 静态资源匿名访问
         chainDefinition.addPathDefinition("/static/**", "anon");
+        // 监控接口匿名访问
         chainDefinition.addPathDefinition("/actuator/**", "anon");
+        // 账号登录接口匿名访问
         chainDefinition.addPathDefinition("/account/login", "anon");
-        chainDefinition.addPathDefinition("/**", "anon");
+        // swagger-ui匿名访问
+        chainDefinition.addPathDefinition("/swagger-ui.html", "anon");
+        chainDefinition.addPathDefinition("/swagger-resources/**", "anon");
+        chainDefinition.addPathDefinition("/v2/**", "anon");
+        chainDefinition.addPathDefinition("/webjars/**", "anon");
+        // 其他资源均需授权访问
+        chainDefinition.addPathDefinition("/**", "authc");
         return chainDefinition;
     }
 

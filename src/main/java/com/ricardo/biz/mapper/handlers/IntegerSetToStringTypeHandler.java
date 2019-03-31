@@ -32,19 +32,19 @@ public class IntegerSetToStringTypeHandler extends BaseTypeHandler<Set<Integer>>
     @Override
     public Set<Integer> getNullableResult(ResultSet rs, String columnName) throws SQLException {
         String s = rs.getString(columnName);
-        return stringToSet(s);
+        return this.stringToSet(s);
     }
 
     @Override
     public Set<Integer> getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         String s = rs.getString(columnIndex);
-        return stringToSet(s);
+        return this.stringToSet(s);
     }
 
     @Override
     public Set<Integer> getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         String s = cs.getString(columnIndex);
-        return stringToSet(s);
+        return this.stringToSet(s);
     }
 
     private Set<Integer> stringToSet(String s) {

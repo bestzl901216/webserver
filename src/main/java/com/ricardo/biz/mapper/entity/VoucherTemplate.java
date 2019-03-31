@@ -1,12 +1,11 @@
 package com.ricardo.biz.mapper.entity;
 
 import com.google.common.collect.Sets;
-import com.ricardo.biz.mapper.handlers.IntegerListToStringTypeHandler;
+import com.ricardo.biz.mapper.handlers.VoucherTemplateGoodsInfoTypeHandler;
 import com.ricardo.biz.mapper.handlers.VoucherTemplateStatusEnumTypeHandler;
 import com.ricardo.common.BaseEntity;
 import com.ricardo.common.DictItem;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import tk.mybatis.mapper.annotation.ColumnType;
 import tk.mybatis.mapper.annotation.KeySql;
 import tk.mybatis.mapper.code.IdentityDialect;
@@ -24,29 +23,57 @@ import java.util.Set;
  */
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "voucher_template")
 public class VoucherTemplate extends BaseEntity {
 
-    /** 兑换券模板id **/
+    /**
+     * 兑换券模板id
+     **/
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL)
     private Integer id;
-    /** 商品id集合 **/
-    @ColumnType(typeHandler = IntegerListToStringTypeHandler.class)
-    private List<Integer> goodsIdList;
-    /** 商品数量集合 **/
-    @ColumnType(typeHandler = IntegerListToStringTypeHandler.class)
-    private List<Integer> goodsQuantityList;
-    /** 零售价 **/
+    /**
+     * 商品信息集合
+     **/
+    @ColumnType(typeHandler = VoucherTemplateGoodsInfoTypeHandler.class)
+    private List<GoodsInfo> goodsInfoList;
+    /**
+     * 零售价
+     **/
     private BigDecimal price;
-    /** 兑换券模板状态 **/
+    /**
+     * 兑换券模板状态
+     **/
     @ColumnType(typeHandler = VoucherTemplateStatusEnumTypeHandler.class)
     private StatusEnum status;
 
+    @Setter
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GoodsInfo {
+        /**
+         * 商品id集合
+         **/
+        private Integer goodsId;
+        /**
+         * 商品数量集合
+         **/
+        private Integer goodsQuantity;
+    }
+
+    @Getter
     public enum StatusEnum {
-        /** 对应兑换券模板上架状态 **/
+        /**
+         * 对应兑换券模板上架状态
+         **/
         OFF_SHELVES((byte) 0, "下架"),
-        /** 对应兑换券模板下架状态 **/
+        /**
+         * 对应兑换券模板下架状态
+         **/
         ON_SHELVES((byte) 1, "上架");
 
         private byte value;
@@ -57,7 +84,7 @@ public class VoucherTemplate extends BaseEntity {
         static {
             Set<DictItem> tempSet = Sets.newHashSet();
             VoucherTemplate.StatusEnum[] enums = VoucherTemplate.StatusEnum.values();
-            for(VoucherTemplate.StatusEnum item : enums) {
+            for (VoucherTemplate.StatusEnum item : enums) {
                 tempSet.add(new DictItem(item.label, item + ""));
             }
             DICT = Collections.unmodifiableSet(tempSet);

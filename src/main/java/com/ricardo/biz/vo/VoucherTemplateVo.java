@@ -15,10 +15,8 @@ public class VoucherTemplateVo {
 
     /** 兑换券种类id **/
     private Integer id;
-    /** 商品id集合 **/
-    private List<Integer> goodsIdList;
-    /** 商品数量集合 **/
-    private List<Integer> goodsQuantityList;
+    /** 商品信息集合 **/
+    private List<VoucherTemplate.GoodsInfo> goodsInfoList;
     /** 零售价 **/
     private BigDecimal price;
     /** 兑换券种类状态 **/

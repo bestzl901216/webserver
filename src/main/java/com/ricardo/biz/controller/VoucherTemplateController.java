@@ -17,7 +17,7 @@ import javax.validation.Valid;
  * @author Ricardo
  * @date 2019/3/27
  */
-@Api("兑换券模板资源接口")
+@Api(tags = "兑换券模板资源接口")
 @Slf4j
 @RestController
 @RequestMapping("voucherTemplate")

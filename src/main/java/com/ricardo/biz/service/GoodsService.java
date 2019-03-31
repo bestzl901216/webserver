@@ -7,8 +7,10 @@ import com.ricardo.utils.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Ricardo
@@ -73,5 +75,21 @@ public class GoodsService {
         }
         log.info("leave method GoodsService.listGoodsByPage: total=[{}]", total);
         return result;
+    }
+
+    /**
+     * 判断id集合中的商品是否全部有效
+     * @param goodsIdSet goodsId集合
+     */
+    void checkGoods(Set<Integer> goodsIdSet) {
+        if (goodsIdSet == null || goodsIdSet.isEmpty()) {
+            throw new RuntimeException("goodsIdSet为null或empty");
+        }
+        Example example = new Example(Goods.class);
+        example.createCriteria().andIn("id", goodsIdSet);
+        int count = goodsMapper.selectCountByExample(example);
+        if (count != goodsIdSet.size()) {
+            throw new RuntimeException("存在无效商品");
+        }
     }
 }

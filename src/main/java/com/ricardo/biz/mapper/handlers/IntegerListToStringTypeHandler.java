@@ -31,19 +31,19 @@ public class IntegerListToStringTypeHandler extends BaseTypeHandler<List<Integer
     @Override
     public List<Integer> getNullableResult(ResultSet rs, String columnName) throws SQLException {
         String s = rs.getString(columnName);
-        return stringToList(s);
+        return this.stringToList(s);
     }
 
     @Override
     public List<Integer> getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         String s = rs.getString(columnIndex);
-        return stringToList(s);
+        return this.stringToList(s);
     }
 
     @Override
     public List<Integer> getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         String s = cs.getString(columnIndex);
-        return stringToList(s);
+        return this.stringToList(s);
     }
 
     private List<Integer> stringToList(String s) {

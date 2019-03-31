@@ -19,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class SwaggerConfig {
 
-    private static final String BASE_PACKAGE = "com.ricardo.biz.controller";
+    private static final String BASE_PACKAGE = "com.ricardo";
     private static final String TITLE = "api文档";
 
     @Bean

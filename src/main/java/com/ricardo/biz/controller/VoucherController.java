@@ -1,5 +1,6 @@
 package com.ricardo.biz.controller;
 
+import com.ricardo.biz.dto.VoucherCreateDto;
 import com.ricardo.biz.mapper.entity.Voucher;
 import com.ricardo.biz.service.VoucherService;
 import com.ricardo.utils.MyObjectUtils;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
  * @author Ricardo
  * @date 2018/11/29
  */
-@Api("兑换券资源接口")
+@Api(tags = "兑换券资源接口")
 @Slf4j
 @RestController
 @RequestMapping("voucher")
