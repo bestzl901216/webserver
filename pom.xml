@@ -112,7 +112,11 @@
             <artifactId>camel-dozer-starter</artifactId>
             <version>2.23.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.weixin4j.spring.boot</groupId>
+            <artifactId>weixin4j-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

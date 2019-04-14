@@ -27,6 +27,8 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/swagger-resources/**", "anon");
         chainDefinition.addPathDefinition("/v2/**", "anon");
         chainDefinition.addPathDefinition("/webjars/**", "anon");
+        // 微信对接接口匿名访问
+        chainDefinition.addPathDefinition("/weChat/**", "anon");
         // 其他资源均需授权访问
         chainDefinition.addPathDefinition("/**", "authc");
         return chainDefinition;
