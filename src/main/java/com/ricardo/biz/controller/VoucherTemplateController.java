@@ -4,7 +4,7 @@ import com.ricardo.biz.dto.VoucherTemplateCreateDto;
 import com.ricardo.biz.mapper.entity.VoucherTemplate;
 import com.ricardo.biz.service.VoucherTemplateService;
 import com.ricardo.biz.vo.VoucherTemplateVo;
-import com.ricardo.utils.MyObjectUtils;
+import com.ricardo.utils.DozerUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class VoucherTemplateController {
     @PostMapping("")
     public Integer create(@RequestBody @Valid VoucherTemplateCreateDto dto) {
         log.info("enter method VoucherTemplateController.create: dto=[{}]", dto);
-        VoucherTemplate voucherTemplate = MyObjectUtils.transform(dto, VoucherTemplate.class);
+        VoucherTemplate voucherTemplate = DozerUtils.map(dto, VoucherTemplate.class);
         return voucherTemplateService.create(voucherTemplate);
     }
 
@@ -44,7 +44,7 @@ public class VoucherTemplateController {
         log.info("enter method GoodsController.getGoodsById: id=[{}]", id);
         VoucherTemplate voucherTemplate = voucherTemplateService.getVoucherTemplateById(id);
         log.info("voucherTemplate=[{}]", voucherTemplate);
-        return MyObjectUtils.transform(voucherTemplate, VoucherTemplateVo.class);
+        return DozerUtils.map(voucherTemplate, VoucherTemplateVo.class);
     }
 
     // 更新兑换券模板

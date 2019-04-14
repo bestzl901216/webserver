@@ -3,15 +3,12 @@ package com.ricardo.biz.controller;
 import com.ricardo.biz.dto.VoucherCreateDto;
 import com.ricardo.biz.mapper.entity.Voucher;
 import com.ricardo.biz.service.VoucherService;
-import com.ricardo.utils.MyObjectUtils;
+import com.ricardo.utils.DozerUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -36,10 +33,21 @@ public class VoucherController {
     @PostMapping("")
     public Integer create(@RequestBody @Valid VoucherCreateDto dto) {
         log.info("enter method VoucherController.create: dto=[{}]", dto);
-        Voucher voucher = MyObjectUtils.transform(dto, Voucher.class);
+        Voucher voucher = DozerUtils.map(dto, Voucher.class);
         return voucherService.create(voucher);
     }
 
-    // 获取兑换码
-    // 兑换商品
+    @ApiOperation("查看兑换码")
+    @GetMapping("/{id}/cdKey")
+    public String viewCdKey(@PathVariable Integer id) {
+        log.info("enter method VoucherController.viewCdKey: id=[{}]", id);
+        return voucherService.viewCdKey(id);
+    }
+
+    @ApiOperation("使用兑换券")
+    @PostMapping("action=exchange")
+    public void exchange(@RequestBody @Valid String cdKey) {
+        log.info("enter method VoucherController.exchange: cdKey=[{}]", cdKey);
+        voucherService.exchange(cdKey);
+    }
 }

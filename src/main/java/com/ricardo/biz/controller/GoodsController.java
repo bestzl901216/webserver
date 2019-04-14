@@ -7,7 +7,7 @@ import com.ricardo.biz.service.GoodsService;
 import com.ricardo.biz.vo.GoodsVo;
 import com.ricardo.common.DictItem;
 import com.ricardo.common.PageResult;
-import com.ricardo.utils.MyObjectUtils;
+import com.ricardo.utils.DozerUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +40,7 @@ public class GoodsController {
     @PostMapping("")
     public Integer create(@RequestBody @Valid GoodsCreateDto dto) {
         log.info("enter method GoodsController.create: dto=[{}]", dto);
-        Goods goods = MyObjectUtils.transform(dto, Goods.class);
+        Goods goods = DozerUtils.map(dto, Goods.class);
         return goodsService.create(goods);
     }
 
@@ -50,17 +50,17 @@ public class GoodsController {
         log.info("enter method GoodsController.getGoodsById: id=[{}]", id);
         Goods goods = goodsService.getGoodsById(id);
         log.info("goods=[{}]", goods);
-        return MyObjectUtils.transform(goods, GoodsVo.class);
+        return DozerUtils.map(goods, GoodsVo.class);
     }
 
     @ApiOperation("分页查询商品信息")
     @GetMapping("")
     public PageResult<GoodsVo> listGoodsByPage(@NotNull @Valid GoodsListByPageDto dto) {
         log.info("enter method GoodsController.listGoodsByPage: dto=[{}]", dto);
-        Goods goods = MyObjectUtils.transform(dto, Goods.class);
+        Goods goods = DozerUtils.map(dto, Goods.class);
         PageResult<Goods> pageResult = goodsService.listGoodsByPage(goods, dto.getPage(), dto.getSize());
         log.info("pageResult=[{}]", pageResult);
-        return new PageResult<>(pageResult.getTotal(), MyObjectUtils.batchTransform(pageResult.getRows(), GoodsVo.class));
+        return new PageResult<>(pageResult.getTotal(), DozerUtils.map(pageResult.getRows(), GoodsVo.class));
     }
 
     @ApiOperation("获取商品状态字典")

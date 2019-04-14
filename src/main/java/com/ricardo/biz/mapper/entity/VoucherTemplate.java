@@ -1,5 +1,6 @@
 package com.ricardo.biz.mapper.entity;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.ricardo.biz.mapper.handlers.VoucherTemplateGoodsInfoTypeHandler;
 import com.ricardo.biz.mapper.handlers.VoucherTemplateStatusEnumTypeHandler;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -80,19 +82,31 @@ public class VoucherTemplate extends BaseEntity {
         private String label;
 
         public static final Set<DictItem> DICT;
+        public static final Map<Byte, StatusEnum> MAP;
 
         static {
             Set<DictItem> tempSet = Sets.newHashSet();
+            Map<Byte, StatusEnum> tempMap = Maps.newHashMap();
             VoucherTemplate.StatusEnum[] enums = VoucherTemplate.StatusEnum.values();
             for (VoucherTemplate.StatusEnum item : enums) {
                 tempSet.add(new DictItem(item.label, item + ""));
+                tempMap.put(item.getValue(), item);
             }
             DICT = Collections.unmodifiableSet(tempSet);
+            MAP = Collections.unmodifiableMap(tempMap);
         }
 
         StatusEnum(byte value, String label) {
             this.value = value;
             this.label = label;
+        }
+
+        public byte getValue() {
+            return this.value;
+        }
+
+        public String getLabel() {
+            return this.label;
         }
 
     }

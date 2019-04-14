@@ -25,7 +25,8 @@ public class MyObjectUtils {
      * @return 目标类型对象
      * @throws NullPointerException 参数为null或者集合包含null时，抛出空指针异常
      */
-    public static <T> T transform(Object object, Class<T> clazz) {
+    @Deprecated
+    private static <T> T transform(Object object, Class<T> clazz) {
         if (object == null || clazz == null) {
             throw new NullPointerException("params is null");
         }
@@ -68,7 +69,8 @@ public class MyObjectUtils {
      * @return 目标类型实例集合
      * @throws NullPointerException 参数为null或者集合包含null时，抛出空指针异常
      */
-    public static <T> List<T> batchTransform(List<?> objects, Class<T> clazz) {
+    @Deprecated
+    private static <T> List<T> batchTransform(List<?> objects, Class<T> clazz) {
         if (objects == null || clazz == null) {
             throw new NullPointerException("params is null");
         }

@@ -107,6 +107,12 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-dozer-starter</artifactId>
+            <version>2.23.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
