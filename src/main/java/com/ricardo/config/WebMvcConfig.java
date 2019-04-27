@@ -1,15 +1,15 @@
 package com.ricardo.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
+ * 之前由于前端后端分离，需要设置跨域。
+ * 继承WebMvcConfigurationSupport后，需要定义swagger资源的位置
  * @author Ricardo
  * @date 2018/12/15
  */
-@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override

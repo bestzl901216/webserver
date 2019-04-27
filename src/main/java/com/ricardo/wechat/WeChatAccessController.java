@@ -75,4 +75,15 @@ public class WeChatAccessController extends WeixinJieruController {
             e.printStackTrace();
         }
     }
+
+    @ApiOperation("获取openid")
+    @GetMapping("openid")
+    public String getOpenid() {
+        try {
+            return weixinTemplate.sns().getOpenId("");
+        } catch (WeixinException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }
