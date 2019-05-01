@@ -48,7 +48,7 @@ public class WeChatOpenidFilter implements Filter {
         if (openid == null) {
             String code = this.getStringValueFromSession(session, SESSION_KEY_CODE);
             if (code == null) {
-                String codeBaseUrl = weixinTemplate.sns().getOAuth2CodeBaseUrl(targetUrl);
+                String codeBaseUrl = weixinTemplate.sns().getOAuth2CodeBaseUrl(httpServletRequest.getRequestURL().toString());
                 log.info("codeBaseUrl：{}", codeBaseUrl);
                 httpServletResponse.sendRedirect(codeBaseUrl);
                 this.setStringValueToSession(session, SESSION_KEY_CODE, null);

@@ -36,6 +36,11 @@ public class VoucherTemplate extends BaseEntity {
     @Id
     @KeySql(dialect = IdentityDialect.MYSQL)
     private Integer id;
+
+    /**
+     * 兑换券模板名称
+     */
+    private String name;
     /**
      * 商品信息集合
      **/

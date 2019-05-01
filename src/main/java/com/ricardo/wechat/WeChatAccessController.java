@@ -58,7 +58,7 @@ public class WeChatAccessController extends WeixinJieruController {
         //创建菜单2 可以包含二级子菜单
         SingleButton button2 = new SingleButton("菜单");
         //创建2级子菜单1，打开页面
-        ViewButton button2sub1 = new ViewButton("搜索", "http://www.soso.com/");
+        ViewButton button2sub1 = new ViewButton("登录", "http://fptwbp.natappfree.cc/weChatViews/login");
         button2.getSubButton().add(button2sub1);
         //创建2级子菜单3，点击事件
         ClickButton button2sub3 = new ClickButton("赞一下我们", "V1001_GOOD");
@@ -74,16 +74,5 @@ public class WeChatAccessController extends WeixinJieruController {
             //打印创建异常日志
             e.printStackTrace();
         }
-    }
-
-    @ApiOperation("获取openid")
-    @GetMapping("openid")
-    public String getOpenid() {
-        try {
-            return weixinTemplate.sns().getOpenId("");
-        } catch (WeixinException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

@@ -19,6 +19,9 @@ public class VoucherTemplateCreateDto {
     @Min(1)
     @Max(1000000000)
     private Integer id;
+
+    @NotBlank
+    private String name;
     /** 商品信息集合 **/
     @NotEmpty
     private List<VoucherTemplate.GoodsInfo> goodsInfoList;

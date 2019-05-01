@@ -34,10 +34,14 @@ public class Voucher extends BaseEntity {
     private Integer id;
     /** 兑换券模板id **/
     private Integer voucherTemplateId;
-    /** 购买者id **/
-    private Integer purchaseUid;
-    /** 购买时间 **/
-    private Integer purchaseTime;
+    /**
+     * 持有人id
+     **/
+    private Integer possessUid;
+    /**
+     * 持有时间
+     **/
+    private Integer possessTime;
     /** 兑换者id **/
     private Integer exchangeUid;
     /** 兑换时间 **/
